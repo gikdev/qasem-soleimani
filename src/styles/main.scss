@@ -1,0 +1,138 @@
+// IMPORTS
+@import "./open-color";
+
+// FONTS
+@font-face {
+  font-family: Vazirmatn;
+  src: url('/vazirmatn.ttf');
+  font-style: normal;
+  font-display: swap;
+}
+
+// VARIABLES
+// BASE
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  background-color: $oc-gray-9;
+  width: 100%;
+}
+html {
+  direction: rtl;
+  color: $oc-white;
+  font-family: Vazirmatn;
+}
+
+// TYPOGRAPHY
+html { font-size: 62.5%; }
+body { font-size: 1.5rem; }
+
+// COMPONENTS & LAYOUTS
+#app {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-areas: 
+    "nav nav nav nav"
+    "main main main main";
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 5rem 1fr;
+}
+main {
+  display: flex;
+  grid-area: main;
+}
+.aside {
+  background: $oc-gray-8;
+  width: 0;
+  flex: 0;
+  display: flex;
+  flex-direction: column;
+  
+  &.visible {
+    width: 25%;
+    flex: 25%;
+  }
+
+  &__item {
+    padding: 1rem 2rem;
+    color: white;
+    border-right: 0.5rem solid transparent;
+    text-decoration: none;
+    
+    &:not(.aside__item--logo):hover {
+      background-color: $oc-gray-7;
+      border-right: 0.5rem solid $oc-gray-5;
+    }
+    &--logo {
+      font-size: 3rem;
+      font-weight: bold;
+      border-bottom: 1px solid white;
+    }
+  }
+}
+.video {
+  width: 100%;
+
+  &__container {
+    padding: 5rem 0;
+    flex: 75%;
+    background-color: $oc-gray-9;
+    display: grid;
+    place-items: center;
+  }
+}
+.message {
+  padding: 2rem 3rem;
+  background-color: $oc-gray-8;
+  border-radius: 1rem;
+}
+.nav {
+  background: $oc-gray-8;
+  grid-area: nav;
+  display: flex;
+
+  &__item {
+    background: transparent;
+    border: none;
+    color: $oc-white;
+    cursor: pointer;
+    display: grid;
+    font-family: Vazirmatn;
+    margin: 0;
+    padding: 1rem 2rem;
+    place-content: center;
+    text-decoration: none;
+    border-bottom: 0.5rem solid transparent;
+    
+    &--logo {
+      margin-left: auto;
+      display: inline-block;
+      padding: 1rem 2rem;
+      color: $oc-red-7;
+      font-weight: bold;
+      cursor: auto;
+    }
+    &:not(.nav__item--logo):hover {
+      background: $oc-gray-7;
+      border-bottom: 0.5rem solid $oc-gray-5;
+    }
+  }
+}
+
+// THEME
+// MEDIA QUERIES
+@media (max-width: 70rem) {
+  .aside.visible { display: flex; }
+  .aside.visible + .video__container { display: none; }
+}
+// @media (orientation: landscape) {
+//   .video { height: 50vh; }
+// }
+// @media (orientation: portrait) {
+//   .video { width: 75%; }
+// }
