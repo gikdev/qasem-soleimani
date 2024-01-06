@@ -19,7 +19,8 @@ tag app
 			<list.visible=navVisible @onItemClick=reloadVideo>
 			<section.video__container>
 				if currentURL 
-					<video.video autoplay controls loop src=currentURL> 
+					# <video.video autoplay controls loop src=currentURL> 
+					<iframe.video src=currentURL> 
 				else
 					<div.message> "هنوز ویدیویی انتخاب نکردی!"
 
